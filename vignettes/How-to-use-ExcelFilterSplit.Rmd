@@ -1,0 +1,58 @@
+---
+title: "How to use ExcelFilterSplit"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to use ExcelFilterSplit}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ExcelFilterSplit)
+set.seed(1234)
+```
+
+
+This vignette describe the use of the ExcelFilterSplit package.
+
+## ExcelFilterSplit function 
+
+```{r}
+
+## Excel file for example 
+
+data <- list(
+  c(Company = "AA", EmployeeID = "1", Info = "Info1"),
+  c(Company = "BB", EmployeeID = "2", Info = "Info2"),
+  c(Company = "BB", EmployeeID = "3", Info = "Info3"),
+  c(Company = "AA", EmployeeID = "4", Info = "Info4"),
+  c(Company = "CC", EmployeeID = "5", Info = "Info5")
+)
+data <- t(as.data.frame(data))
+colnames(data) <- c("Company", "EmployeeID", "Info")
+rownames(data) <- NULL
+head(data)
+
+openxlsx::write.xlsx(data, file = "example.xlsx")
+
+
+## ExcelFilterSplit
+
+getwd()
+MY_input_path <- "example.xlsx"
+MY_input_filterby <- "Company"
+
+
+ExcelFilterSplit::ExcelFilterSplit(
+  input_path = MY_input_path,
+  input_filterby = MY_input_filterby
+)
+
+```

@@ -1,0 +1,22 @@
+Package: ExcelFilterSplit
+Title: Create easily multiple filtered Excel/CSV files
+Version: 0.0.0.9069
+Authors@R: 
+    person(given = "Thibault",
+           family = "Maurin",
+           role = c("aut", "cre"),
+           email = "tmaurin.pro@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: tools,readxl,openxlsx,stringi,itertools2,fs,shiny
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 2.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 2
