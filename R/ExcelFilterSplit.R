@@ -208,7 +208,7 @@ ExcelFilterSplit <- function(
   print(paste0("output_EXCstyle", " : ", output_EXCstyle))
 
   assert_error(
-    expression = isTRUE(output_EXCstyle == "default") | isTRUE(output_EXCstyle == "") | isTRUE(output_EXCstyle == "keep_style") | isTRUE(output_EXCstyle == "none") | isTRUE(output_EXCstyle %in% values_ExcelTableStyleNames),
+    expression = isTRUE(output_EXCstyle == "default") | is.null(output_EXCstyle) | isTRUE(output_EXCstyle == "keep_style") | isTRUE(output_EXCstyle == "none") | isTRUE(output_EXCstyle %in% values_ExcelTableStyleNames),
     message = "Invalid argument 'output_EXCstyle' (style of Excel files created).
               Argument format accepted : 'default' or 'none' or 'keep_style' or one of Excel TableStyles.
               See link https://github.com/xuri/excelize-doc/blob/master/en/utils.md for Excel TableStyles availabilities."
@@ -302,7 +302,7 @@ ExcelFilterSplit <- function(
   }
 
   if (truevalue_inputformat == "excel") {
-    if (truevalue_outputformat == "excel" && ( output_EXCstyle == "default" | output_EXCstyle == "")) {
+    if (truevalue_outputformat == "excel" && ( output_EXCstyle == "default" | is.null(output_EXCstyle))) {
       output_EXCstyle <- "keep_style"
     }
     if (truevalue_outputformat == "csv") {
@@ -322,7 +322,7 @@ ExcelFilterSplit <- function(
   } else if (truevalue_inputformat == "csv") {
     input_EXCsheet <- NULL
     output_EXCsheets <- NULL
-    if (truevalue_outputformat == "excel" && ( output_EXCstyle == "default" | output_EXCstyle == "")) {
+    if (truevalue_outputformat == "excel" && ( output_EXCstyle == "default" | is.null(output_EXCstyle))) {
       output_EXCstyle <- defaultvalue_ExcelTableStyle
     }
     if (truevalue_outputformat == "excel" && output_EXCstyle == "keep_style") {
