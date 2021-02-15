@@ -205,6 +205,8 @@ ExcelFilterSplit <- function(
   }
   # https://github.com/xuri/excelize-doc/blob/master/en/utils.md
 
+  print(paste0("output_EXCstyle", " : ", output_EXCstyle))
+
   assert_error(
     expression = isTRUE(output_EXCstyle == "default") | isTRUE(output_EXCstyle == "keep_style") | isTRUE(output_EXCstyle == "none") | isTRUE(output_EXCstyle %in% values_ExcelTableStyleNames),
     message = "Invalid argument 'output_EXCstyle' (style of Excel files created).
